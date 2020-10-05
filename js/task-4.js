@@ -1,34 +1,28 @@
-const orderPieces = 4;
+// Задача 2 - 4
+// Форматирование строки в зависимости от длинны строки
+// Напиши функцию formatString(string, maxLength = 40) которая принимает строку
+// и форматирует ее если необходимо.
 
-const credits = 23580;
-const pricePerDroid = 3000;
-const CANCELED_BY_USER = 'Отменено пользователем!';
-const ACCESS_DENIED = 'Недостаточно средств на счету!';
-
-let totalPrice = orderPieces * pricePerDroid; // Write code on this line
-let balanceCredit = credits - totalPrice; // Write code on this line
-let message;
-
-// Write code under this line
-if (orderPieces === null) {
-  message = 'Отменено пользователем!';
-} else {
-  if (balanceCredit >= 0) {
-    message = `Вы купили ${orderPieces} дроидов, на счету осталось ${balanceCredit} кредитов`;
-  } else {
-    message = 'Недостаточно средств на счету!';
+// Если длина строки не превышает maxLength, функция возвращает ее в исходном виде.
+// Если длина больше maxLength, то функция обрезает строку до размера maxLength символов и
+// добавляет в конец строки троеточие ..., после чего возвращает укороченную версию.
+function formatString(string, maxLength = 40) {
+  // Write code under this line
+  string = string.split('');
+  if (string.length >= maxLength) {
+    string.splice(maxLength);
+    string.push('...');
   }
+  return string.join('');
 }
-console.log(message);
+console.log(formatString(''));
+console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
+// 'Curabitur ligula sapien, tincidunt non.'
 
-//если orderPieces равно 4
-// то значение message будет равно
-// 'Вы купили 4 дроидов, на счету осталось 11580 кредитов'
+console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
+// 'Vestibulum facilisis, purus nec pulvinar...'
 
-//если orderPieces равно null
-// то значение message будет равно
-// 'Отменено пользователем!'
-
-//если orderPieces равно 10
-// то значение message будет равно
-// 'Недостаточно средств на счету!'
+console.log(
+  formatString('Vestibulum facilisis, purus nec pulvinar iaculis.', 30),
+);
+// 'Vestibulum facilisis, purus ne...'

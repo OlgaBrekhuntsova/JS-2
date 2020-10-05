@@ -1,33 +1,26 @@
-const userPassword = 'jqueryismyjam';
-// const userPassword = null;
-const ADMIN_PASSWORD = 'jqueryismyjam';
-
-const CANCELED_BY_USER = 'Отменено пользователем!';
-const ACCESS_IS_ALLOWED = 'Добро пожаловать!';
-const ACCESS_DENIED = 'Доступ запрещен, неверный пароль!';
-let message;
-
-// Write code under this line
-if (userPassword === ADMIN_PASSWORD) {
-  message = ACCESS_IS_ALLOWED;
-} else {
-  if (userPassword === null) {
-    message = CANCELED_BY_USER;
-  } else {
-    message = ACCESS_DENIED;
+//Задача 2 - 3
+// Поиск самого длинного слово в строке с пробелами
+// Напиши функцию findLongestWord(string = ""), которая принимает параметром произвольную строку
+// (в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке.
+function findLongestWord(string = '') {
+  // Write code under this line
+  let maxWordLength = 0;
+  let maxWordIndex = 0;
+  string = string.split(' ');
+  for (let i = 0; i < string.length; i += 1) {
+    if (maxWordLength < string[i].length) {
+      maxWordLength = string[i].length;
+      maxWordIndex = i;
+    }
   }
+  return string[maxWordIndex];
 }
+console.log(findLongestWord(''));
+console.log(findLongestWord('The quick brown fox jumped over the lazy dog'));
+// 'jumped'
 
-console.log(message);
+console.log(findLongestWord('Google do a roll'));
+// 'Google'
 
-//если userPassword равно 'jqueryismyjam'
-// то значение message будет равно
-// 'Добро пожаловать!'
-
-//если userPassword равно  null
-// то значение message будет равно
-// 'Отменено пользователем!'
-
-//если userPassword равно '123'
-// то значение message будет равно
-// 'Доступ запрещен, неверный пароль!'
+console.log(findLongestWord('May the force be with you'));
+// 'force'
